@@ -1,11 +1,7 @@
-FROM amazonlinux
+FROM nginx
 
-RUN yum -y update
-RUN yum -y install httpd
-RUN yum -y install php
+COPY ./index.html /var/www/html/index.html
 
-COPY ./index.php /var/www/html/index.php
-
-CMD ["/usr/sbin/httpd","-D","FOREGROUND"]
+CMD ["/usr/sbin/nginx","-D","FOREGROUND"]
 
 EXPOSE 80
